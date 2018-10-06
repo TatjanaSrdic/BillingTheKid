@@ -1,0 +1,381 @@
+@import 'vars';
+@import 'mixins';
+
+@include main;
+ 
+body{
+    width: 100%;
+    @include box_sizing;
+ }
+header{
+    width: 100%;
+
+    .mainNavigation{
+        width: 100%;
+        height: 4em;
+        white-space: unset;
+        ul{
+            float: right;
+            background-color: $tamno-plava;
+            height: 100%;
+            width: 93%;
+            white-space: unset;
+            list-style: none;
+            padding-top: 1.5em;
+            li{
+                float: right;
+                padding-right: 5em;
+                a{
+                    text-decoration: none;
+                    color: white;
+                    font-size: 14px;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .logo{
+            width: 7%;
+            height: 100%;
+            background-color: $crvena;
+            white-space: unset;
+            float: right;
+            padding: 0.5% 1.5%;
+            img{
+                width: 3em;
+            }
+        }
+    }
+}
+section {
+	width: 100%;
+	@include clearfix;
+}
+.intro{
+    padding-top: 32em;
+    height: 40em;
+    background-image: url(../slike/intro.jpg);
+    @include cover_background;
+    .heading{
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.295);
+        height: 8em;
+        text-align: center;
+        padding-top: 1em;
+        
+        h1, h2, h3 {color: white;}
+        h1{
+            font-size: 3.3em;
+        }
+        h2{
+            font-size: 1.2em;
+            font-weight: normal;
+        }
+        h3{
+            font-size: 1em;
+            font-weight: normal;
+        }
+    }
+
+}
+.button {
+	padding: .7em 1.2em;
+	border-radius: 60px;
+	border: 1px solid $siva;
+	margin: 0 .8em;
+	cursor: pointer;
+
+	&:hover {
+		background: $siva;
+		color: #fff;
+	}
+}
+
+.filter {
+    padding: 3em 15%;
+	text-align: right;
+}
+.offers{
+    background-color: $svetlo-siva2;
+    display: block;
+}
+    
+.offer{
+        width: 50%;
+        margin: 4em auto;
+        height: 10em;
+
+        .signature{
+            display: none;
+            padding-top: 4em;
+            h2{
+                color: $tamno-plava;
+                text-transform: uppercase;
+                font-size: 1.5em;
+            }
+            h3{
+                color: $crvena;
+                font-weight: normal;
+            }
+        }
+        #img{
+            width: 10em;
+            height: 10em;
+            border-radius: 50%;
+            opacity: 0.7;
+            @include cover_background;
+            cursor: pointer;
+            
+            @for $i from 1 through 3 {
+                &.img#{$i} {
+                    background-image: url("../slike/fin#{$i}.jpg");
+                }
+            }
+        }
+        &:nth-child(2n-1){
+            #img{
+                float: left;
+            }
+            .signature{
+                float: right;
+                text-align: left;
+            }
+        }
+        &:nth-child(2n){
+            #img{
+                float: right;
+            }
+            .signature{
+                float: left;
+                text-align: right;
+            } 
+        }
+
+        &:hover {
+            #img{
+                opacity: 1;
+            }
+            .signature{
+                display: unset;
+            }
+        }
+}
+
+.pricing{
+    background-color: white;
+    text-align: center;
+    padding: 2em 0;
+    font-size: 0.8em;
+    a{
+        display: none;
+    }
+
+    h2{
+        font-size: 1em;
+        font-weight: normal;
+        margin-bottom: 2em;
+    }
+
+    table{
+        width: 45%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        th, td {
+            padding: .5em 0;
+            font-weight: normal;
+        }
+        td{
+            border: 1px solid $siva;
+        }
+        th.dark-cell:first-child{
+            border-right:1px solid $siva; 
+        }
+        .red-cell{
+            background-color: $crvena;
+            color: white;
+        }
+        .dark-cell{
+            background-color: $tamno-plava;
+            color: white;
+        }
+    }
+
+}
+
+.pricing, .contact{
+    h1{
+        font-weight: bold;
+        text-transform: uppercase;
+        color: $tamno-plava;
+        margin-bottom: 1em;
+        font-size: 2em;
+    }
+    
+}
+
+.contact{
+    text-align: center;
+    background-color: $svetlo-siva2;
+    padding: 2em 20%;
+    iframe{
+        width: 35%;
+        float: left;
+    }
+    form{
+        width: 60%;
+        float: right;
+        padding: 1em;
+        background-color: $crvena;
+        break-inside: unset;
+        .contactInput{
+            float: left;
+			padding: .5em;
+			color: $crvena;
+			border: none;
+			margin: .5em;
+        }
+        select{
+            width: 20%;
+            float: left;
+        }
+        .contactInput[type="text"] {
+            width: 70%;
+            float: right;
+        }
+        .contactInput[type="email"] {
+			width: 97%;
+        }
+        textarea.contactInput {
+			width: 97%;
+		}
+    }
+}
+footer{
+    font-size: .8em;
+    text-align: center;
+	width: 100%;
+    background-color: $tamno-plava;
+    color: white;
+    padding: 1em;
+    span{
+        color: $crvena;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    .offers{
+        .offer{
+            width: 80%;
+        }
+    }
+    .pricing{
+        table{
+            width: 70%;
+        }
+    }
+    .contact{
+        display: block;
+        padding: 2em 0;
+        iframe{
+            float: none;
+            width: 60%;
+            margin: 2em auto;
+        }
+        form{
+            width: 70%;
+            margin: 0 auto;
+            float: none;
+            text-align: left;
+            .contactInput{
+               float: none;
+            }
+        }
+    }
+
+}
+@media screen and (max-width: 700px){
+    header{
+        @include clearfix;
+        .mainNavigation{
+            ul{
+                width: 100%;
+                display: block;
+                height: fit-content;
+                text-align: center;
+                padding: 2em;
+                li{
+                    float: none;
+                    padding: 1em 0;
+                    a{
+                        font-size: 16px;
+                    }
+
+                }
+            }
+            .logo{
+                width: 100%;
+                display: block;
+            }
+        }
+    }
+    .intro{
+        padding: 0;
+        height: fit-content;
+        background-image:unset;
+        .heading{
+            background-color: rgba(0, 0, 0, 0.842);
+        }
+    }
+    .filter {
+        padding: 3em 2%;
+        text-align: center;
+    }
+    .offer{
+        height: fit-content;
+        @include clearfix;
+        .signature{
+            display: block;
+        }
+        #img{
+            opacity: 1;
+        }
+        &:nth-child(2n-1), &:nth-child(2n) {
+            #img{
+                float: none;
+                display: block;
+                margin: 0 auto
+            }
+            .signature{
+                float: none;
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+        }
+
+    }
+    .pricing{
+        table{
+            display: none;
+        }
+        a{
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+        }
+    }
+    .contact{
+        iframe{
+            width: 80%;
+        }
+        form{
+            width: 95%;
+        }
+    }
+
+       
+
+}
+

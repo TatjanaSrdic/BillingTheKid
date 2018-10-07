@@ -126,6 +126,10 @@ section {
             opacity: 0.7;
             @include cover_background;
             cursor: pointer;
+            &:hover + .signature{
+                opacity: 1;
+                display: block;
+            }
             
             @for $i from 1 through 3 {
                 &.img#{$i} {
@@ -150,15 +154,6 @@ section {
                 float: left;
                 text-align: right;
             } 
-        }
-
-        &:hover {
-            #img{
-                opacity: 1;
-            }
-            .signature{
-                display: unset;
-            }
         }
 }
 
